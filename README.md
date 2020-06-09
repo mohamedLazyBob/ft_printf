@@ -1,6 +1,4 @@
-# ft_printf
-
-# recoding of the original printf in C;
+# ft_printf: recoding of the original function printf.
 
 This Project consist of a recoding of the famous printf function in C language.
 ----

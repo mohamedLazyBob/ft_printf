@@ -26,7 +26,7 @@ char	*apply_hash_hex_1(char *result, char *prefix)
 
 char	*apply_hash_hex_2(char *result, int diff, char *prefix, int flags)
 {
-	if (IS_ON(flags, MINUS) && diff > 0)
+	if (is_on(flags, MINUS) && diff > 0)
 	{
 		if (diff >= 2)
 			place_before(result, prefix, 1);
@@ -48,7 +48,7 @@ char	*apply_hash_hex(char *result, int diff, char *prefix, int flags)
 
 	if (result[0] == '0')
 	{
-		if (diff >= 2 && IS_ON(flags, MINUS))
+		if (diff >= 2 && is_on(flags, MINUS))
 			place_before(result, prefix, 1);
 		else if (diff == 1)
 		{
@@ -71,13 +71,13 @@ char	*apply_hash_oct(char *result, int diff, int flags)
 {
 	if (result[0] == ' ')
 	{
-		if (!IS_ON(flags, POINT) || (IS_ON(flags, POINT) && diff > 0))
+		if (!is_on(flags, POINT) || (is_on(flags, POINT) && diff > 0))
 			place_at_lastsp(result, '0', flags);
 		return (result);
 	}
 	else if (result[0] != '0' && result[0] != ' ')
 	{
-		if (IS_ON(flags, MINUS) && diff > 0)
+		if (is_on(flags, MINUS) && diff > 0)
 			place_before(result, "0", 1);
 		else
 			result = place_before(result, "0", 0);
@@ -89,7 +89,7 @@ char	*apply_hash(int *flags, char *result, int conv, int diff)
 {
 	char	prefix[3];
 
-	if (!IS_ON(*flags, HASH) || !result)
+	if (!is_on(*flags, HASH) || !result)
 		return (result);
 	if (conv == HEX || conv == BHEX)
 	{

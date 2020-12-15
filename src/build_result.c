@@ -19,14 +19,14 @@ int			max(int a, int b)
 
 void		fspecial(char *result, int *flags, int *special, int *conv)
 {
-	if (IS_ON(*flags, POINTER))
+	if (is_on(*flags, POINTER))
 	{
 		*special = 0;
-		SET_FLAG_OFF(*flags, POINTER);
+		set_flag_off(flags, POINTER);
 		*conv = HEX;
 	}
 	else
-		*special = ((result[0] == '0') && !IS_ON(*flags, OCTAL));
+		*special = ((result[0] == '0') && !is_on(*flags, OCTAL));
 }
 
 int			gspecial(char *result, int *width, int *flags, int *conv)
@@ -34,7 +34,7 @@ int			gspecial(char *result, int *width, int *flags, int *conv)
 	if (*width < 0)
 	{
 		*width = -(*width);
-		SET_FLAG_ON(*flags, MINUS);
+		set_flag_on(flags, MINUS);
 	}
 	*conv = flag_lookup(*flags, 0, 12);
 	return (*conv < 0);
@@ -76,7 +76,7 @@ int			flag_lookup(int flags, int pos, int bound)
 	i = 0;
 	while (i < bound)
 	{
-		if (IS_ON(flags, (pos + i)))
+		if (is_on(flags, (pos + i)))
 			return (i);
 		i++;
 	}

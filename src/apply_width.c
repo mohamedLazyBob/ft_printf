@@ -43,19 +43,19 @@ char	*apply_width(int *flags, char *result, int conv, int width)
 	if (width < 0)
 	{
 		width = -width;
-		SET_FLAG_ON(*flags, MINUS);
+		set_flag_on(flags, MINUS);
 	}
 	if (!result || (len = ft_strlen(result)) >= width)
 		return (result);
 	if (!(new_result = ft_strnew(width)))
 		return (NULL);
-	pholder = (IS_ON(*flags, MINUS) || !IS_ON(*flags, ZERO)) ? ' ' : '0';
-	sign = (conv > STRING && IS_SIGN(result[0]));
+	pholder = (is_on(*flags, MINUS) || !is_on(*flags, ZERO)) ? ' ' : '0';
+	sign = (conv > STRING && is_sign(result[0]));
 	ft_memset(new_result, pholder, width);
 	ft_memcpy(&new_result[width - len], result, len);
-	if (IS_ON(*flags, MINUS))
+	if (is_on(*flags, MINUS))
 		apply_minus(new_result, result, len, width);
-	else if (IS_ON(*flags, ZERO))
+	else if (is_on(*flags, ZERO))
 		apply_zero(new_result, result, width - len, sign);
 	free(result);
 	return (new_result);

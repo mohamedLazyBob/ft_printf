@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include <strings.h>
-# include "../libft/libft.h"
+# include "../libft/headers/libft.h"
 # include "float_bigint.h"
 # include <stdio.h>
 # include <stdlib.h>
@@ -23,13 +23,16 @@
 # define FLAGS_BUF "cspdiouxXfeg#0-+ llhhlhLbrk'*$."
 # define FLAGS_SIZE 32
 # define CONV_BOUND 12
-# define SET_FLAG(flags, pos) flags = (1 << pos) | flags
-# define SET_FLAG_ON(flags, pos) flags = (1 << pos) | flags
-# define SET_FLAG_OFF(flags, pos) flags = (~(1 << pos)) & flags
-# define RESET_FLAGS(flags) flags = 0
-# define IS_SIGN(c) (c == '-' || c == '+' || c == ' ')
-# define IS_CONV(c) c != EXPO && c != STRING && c != XFLOAT
-# define IS_ON(flags, pos) (((1 << pos) & flags) != 0)
+
+void			set_flag(int *flags, int pos);
+void			set_flag_off(int *flags, int pos);
+void			reset_flags(int	*flags);
+int				is_sign(int c);
+int				is_conv(int c);
+int				is_on(int flags, int pos);
+
+
+
 # define MAX_L " 9223372036854775808"
 # define DBL_DIGITS 16390
 # define LDBL_DIGITS 16390
@@ -93,4 +96,6 @@ void			ft_format_float(t_bigint_compound *compound, t_int32 exponent,
 										t_buffer *node);
 void			ft_scientific_format(t_bigint_compound *compound,
 										t_int32 exponent, t_buffer *node);
+int			set_flag_on(int *flags, int pos);
+
 #endif

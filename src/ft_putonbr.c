@@ -34,7 +34,7 @@ int		ft_putonbr(va_list ap, int flags, int precision, int width)
 		ret[i-- - 1] = n % 8 + '0';
 		n /= 8;
 	}
-	SET_FLAG_ON(flags, OCTAL);
+	set_flag_on(&flags, OCTAL);
 	ret = build_result(flags, ret, precision, width);
 	return (ft_putxstr(ret));
 }

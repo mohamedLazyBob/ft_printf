@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/ft_printf.h"
+#include "ft_printf.h"
 
 char	*place_before(char *result, char *prefix, int xbool)
 {
@@ -42,11 +42,11 @@ char	*place_at_lastsp(char *new_result, int sign, int flags)
 	i = 0;
 	while (new_result[i] == ' ')
 		i++;
-	if (!new_result[i] && IS_ON(flags, MINUS))
+	if (!new_result[i] && is_on(flags, MINUS))
 		new_result[0] = sign;
 	else if (i > 0 && new_result[i] != '-')
 	{
-		if (IS_ON(flags, OCTAL) && new_result[i] == '0')
+		if (is_on(flags, OCTAL) && new_result[i] == '0')
 			return (new_result);
 		new_result[i - 1] = sign;
 	}
@@ -57,10 +57,10 @@ char	*apply_space(char *result, int diff, int flags)
 {
 	int		xbool;
 
-	xbool = (diff > 0 && IS_ON(flags, MINUS));
+	xbool = (diff > 0 && is_on(flags, MINUS));
 	if (result[0] == '0')
 	{
-		if (diff > 0 && !IS_ON(flags, MINUS))
+		if (diff > 0 && !is_on(flags, MINUS))
 			result[0] = ' ';
 		else
 			return (place_before(result, " ", xbool));
@@ -74,10 +74,10 @@ char	*apply_plus(char *result, int diff, int flags)
 {
 	int		xbool;
 
-	xbool = (diff > 0 && IS_ON(flags, MINUS));
+	xbool = (diff > 0 && is_on(flags, MINUS));
 	if (result[0] == '0')
 	{
-		if (diff > 0 && !IS_ON(flags, MINUS))
+		if (diff > 0 && !is_on(flags, MINUS))
 			result[0] = '+';
 		else
 			return (place_before(result, "+", xbool));
@@ -96,9 +96,9 @@ char	*apply_signs(int *flags, char *result, int conv, int diff)
 	new_result = result;
 	if (!(conv == DEC || conv == IDEC) && !(conv >= XFLOAT && conv <= GEXPO))
 		return (result);
-	if (IS_ON(*flags, SPACE))
+	if (is_on(*flags, SPACE))
 		new_result = apply_space(result, diff, *flags);
-	if (IS_ON(*flags, PLUS))
+	if (is_on(*flags, PLUS))
 		new_result = apply_plus(new_result, diff, *flags);
 	return (new_result);
 }

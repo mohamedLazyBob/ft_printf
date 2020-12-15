@@ -78,13 +78,13 @@ char	*apply_precision(int *flags, char *result, int conv, int precision)
 
 	new_result = result;
 	if (precision < 0 && !(precision = 0))
-		SET_FLAG_OFF(*flags, POINT);
-	if (IS_ON(*flags, POINT) && IS_CONV(conv))
-		SET_FLAG_OFF(*flags, ZERO);
+		set_flag_off(flags, POINT);
+	if (is_on(*flags, POINT) && is_conv(conv))
+		set_flag_off(flags, ZERO);
 	if ((DEC <= conv && conv <= BHEX) && (result[0] == '0') && \
-			IS_ON(*flags, POINT) && (precision == 0))
+			is_on(*flags, POINT) && (precision == 0))
 		result[0] = '\0';
-	if (!result || (((len = ft_strlen(result)) > precision) && IS_CONV(conv)))
+	if (!result || (((len = ft_strlen(result)) > precision) && is_conv(conv)))
 		return (result);
 	if (DEC <= conv && conv <= BHEX)
 		new_result = apply_precision_1(result, precision);
@@ -93,6 +93,6 @@ char	*apply_precision(int *flags, char *result, int conv, int precision)
 	if ((conv == XFLOAT) && (precision > 0))
 		new_result = apply_precision_3(result, precision);
 	if (conv == STRING)
-		IS_ON(*flags, POINT) ? new_result[precision] = '\0' : 1;
+		is_on(*flags, POINT) ? new_result[precision] = '\0' : 1;
 	return (new_result);
 }

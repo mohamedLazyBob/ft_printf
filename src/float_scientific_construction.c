@@ -56,7 +56,7 @@ static void		ft_scientific_number(t_bigint_compound *compound, \
 	node->buff = apply_precision(&node->flags, node->buff, \
 									EXPO, node->precision);
 	numdigits = (node->precision > 0) ? node->precision + 1 : numdigits;
-	if (node->precision != 0 || IS_ON(node->flags, HASH))
+	if (node->precision != 0 || is_on(node->flags, HASH))
 	{
 		ft_memmove(node->buff + 2, node->buff + 1, numdigits);
 		node->buff[1] = '.';
@@ -82,7 +82,7 @@ void			ft_scientific_format(t_bigint_compound *compound, \
 
 	pos = ft_add_sign(compound, *node);
 	(node->buff) += (pos == 1) ? 1 : 0;
-	if ((node->precision == 0 && !IS_ON(node->flags, POINT)) || \
+	if ((node->precision == 0 && !is_on(node->flags, POINT)) || \
 									(node->precision < 0))
 		node->precision = 6;
 	ft_memset(node->buff, '\0', node->max_len + 1);

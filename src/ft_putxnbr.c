@@ -36,7 +36,7 @@ int		ft_putxnbr(va_list ap, int flags, int precision, int width)
 		ret[i-- - 1] = s[n % 16];
 		n /= 16;
 	}
-	SET_FLAG_ON(flags, HEX);
+	set_flag_on(&flags, HEX);
 	ret = build_result(flags, ret, precision, width);
 	return (ft_putxstr(ret));
 }
@@ -65,7 +65,7 @@ int		ft_putbxnbr(va_list ap, int flags, int precision, int width)
 		ret[i-- - 1] = s[n % 16];
 		n /= 16;
 	}
-	SET_FLAG_ON(flags, BHEX);
+	set_flag_on(&flags, BHEX);
 	ret = build_result(flags, ret, precision, width);
 	return (ft_putxstr(ret));
 }

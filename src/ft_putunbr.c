@@ -33,7 +33,7 @@ int		ft_putunbr(va_list ap, int flags, int precision, int width)
 		ret[i-- - 1] = n % 10 + '0';
 		n /= 10;
 	}
-	SET_FLAG_ON(flags, XUINT);
+	set_flag_on(&flags, XUINT);
 	ret = build_result(flags, ret, precision, width);
 	return (ft_putxstr(ret));
 }

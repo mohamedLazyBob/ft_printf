@@ -14,9 +14,9 @@
 
 int		ft_putptr(va_list ap, int flags, int precision, int width)
 {
-	SET_FLAG_ON(flags, POINTER);
-	SET_FLAG_ON(flags, HASH);
-	SET_FLAG_ON(flags, LLONG);
+	set_flag_on(&flags, POINTER);
+	set_flag_on(&flags, HASH);
+	set_flag_on(&flags, LLONG);
 	return (ft_putxnbr(ap, flags, precision, width));
 }
 

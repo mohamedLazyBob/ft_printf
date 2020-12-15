@@ -42,9 +42,9 @@ char	*flag_scope(int *nbr, char *fmt, va_list ap)
 	while (*fmt && is_conv_spec(*fmt, FLAGS_BUF) == -1 && !(pos = 0))
 	{
 		pos += save_width(fmt, &pw[1], ap);
-		(void)(fmt[pos] == '.' && (SET_FLAG_ON(flags, POINT)));
+		(void)((fmt[pos] == '.') && (1 == set_flag_on(&flags, POINT)));
 		pos += save_precision(fmt + pos, &pw[0], ap, flags);
-		(void)(fmt[pos] == '.' && (SET_FLAG_ON(flags, POINT)));
+		(void)(fmt[pos] == '.' && (set_flag_on(&flags, POINT)));
 		pos += save_flag(&flags, fmt + pos);
 		if (!pos)
 			break ;

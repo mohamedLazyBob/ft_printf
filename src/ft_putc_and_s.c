@@ -19,16 +19,16 @@ int		ft_putc(va_list ap, int flags, int precision, int width)
 
 	(void)precision;
 	c = (char)va_arg(ap, int);
-	(width < 0) ? ((width *= -1) && (SET_FLAG_ON(flags, MINUS))) : 1;
+	(width < 0) ? ((width *= -1) && (set_flag_on(&flags, MINUS))) : 1;
 	ret = width;
-	if (width > 0 && IS_ON(flags, MINUS))
+	if (width > 0 && is_on(flags, MINUS))
 	{
 		write(1, &c, 1);
 		while (--width)
 			write(1, " ", 1);
 		return (ret);
 	}
-	else if (width > 0 && !IS_ON(flags, MINUS))
+	else if (width > 0 && !is_on(flags, MINUS))
 	{
 		while (--width)
 			write(1, " ", 1);
@@ -46,16 +46,16 @@ int		ft_put_char(char c, int flags, int width)
 	int		ret;
 
 	ret = width;
-	if (width > 0 && IS_ON(flags, MINUS))
+	if (width > 0 && is_on(flags, MINUS))
 	{
 		write(1, &c, 1);
 		while (--width)
 			write(1, " ", 1);
 		return (ret);
 	}
-	else if (width > 0 && !IS_ON(flags, MINUS))
+	else if (width > 0 && !is_on(flags, MINUS))
 	{
-		pad = IS_ON(flags, ZERO) ? '0' : ' ';
+		pad = is_on(flags, ZERO) ? '0' : ' ';
 		while (--width)
 			write(1, &pad, 1);
 		write(1, &c, 1);
@@ -76,7 +76,7 @@ int		ft_puts(va_list ap, int flags, int precision, int width)
 		s = ft_strdup("(null)");
 	else
 		s = ft_strdup(s);
-	SET_FLAG_ON(flags, STRING);
+	set_flag_on(&flags, STRING);
 	s = build_result(flags, s, precision, width);
 	return (ft_putxstr(s));
 }

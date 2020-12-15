@@ -95,7 +95,7 @@ void			ft_format_float(t_bigint_compound *compound, \
 
 	pos = ft_add_sign(compound, *node);
 	(node->buff) += (pos == 1) ? 1 : 0;
-	if ((node->precision == 0 && !IS_ON(node->flags, POINT)) || \
+	if ((node->precision == 0 && !is_on(node->flags, POINT)) || \
 			(node->precision < 0))
 		node->precision = 6;
 	ft_memset(node->buff, '\0', node->max_len + 1);
@@ -109,7 +109,7 @@ void			ft_format_float(t_bigint_compound *compound, \
 	ft_add_leading_zeros(node, &numdigits, compound->bigbit);
 	ft_add_trailing_zeros(node, &numdigits, compound->bigbit);
 	if (compound->bigbit != -1337 && (node->precision != 0 || \
-				IS_ON(node->flags, HASH)))
+				is_on(node->flags, HASH)))
 		ft_add_pt(node->buff, node->print_expo, node->max_len + 1, numdigits);
 	node->buff = apply_precision(&node->flags, node->buff, \
 									XFLOAT, node->precision);

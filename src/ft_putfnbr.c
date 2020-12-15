@@ -18,7 +18,7 @@ int		ft_putfnbr(va_list ap, int flags, int precision, int width)
 	double		nbr;
 	t_int32		len;
 
-	if (IS_ON(flags, BLONG))
+	if (is_on(flags, BLONG))
 		return (ft_putlfnbr(ap, flags, precision, width));
 	len = DBL_DIGITS;
 	if (precision > len)
@@ -71,7 +71,7 @@ int		ft_putenbr(va_list ap, int flags, int precision, int width)
 	double		nbr;
 	t_int32		len;
 
-	if (IS_ON(flags, BLONG))
+	if (is_on(flags, BLONG))
 		return (ft_putlenbr(ap, flags, precision, width));
 	(!(node = (t_buffer*)malloc(sizeof(t_buffer)))) ? (exit(1)) : 1;
 	len = LDBL_DIGITS;

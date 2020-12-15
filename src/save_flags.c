@@ -23,13 +23,13 @@ int		save_flag(int *flags, char *format)
 	{
 		if ((pos = find_flag(FLAGS_BUF, format, 1)) != -1)
 		{
-			SET_FLAG_ON(*flags, pos);
+			set_flag_on(flags, pos);
 			return (fw);
 		}
 	}
 	if (pos < 12)
 		return (0);
-	SET_FLAG_ON(*flags, pos);
+	set_flag_on(flags, pos);
 	return (fw);
 }
 

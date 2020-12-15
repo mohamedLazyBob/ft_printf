@@ -55,9 +55,9 @@ t_uint32	is_special_case(t_bigint_compound *compound, t_buffer *node)
 
 void		ft_special_case(t_buffer *node)
 {
-	SET_FLAG_ON(node->flags, STRING);
-	SET_FLAG_OFF(node->flags, XFLOAT);
-	SET_FLAG_OFF(node->flags, ZERO);
+	set_flag_on(&(node->flags), STRING);
+	set_flag_off(&(node->flags), XFLOAT);
+	set_flag_off(&(node->flags), ZERO);
 	node->buff = \
 		build_result(node->flags, node->buff, node->precision, node->width);
 }
@@ -73,12 +73,12 @@ t_uint32	ft_add_sign(t_bigint_compound *compound, t_buffer node)
 		node.buff[0] = '-';
 		return (1);
 	}
-	else if (IS_ON(node.flags, PLUS))
+	else if (is_on(node.flags, PLUS))
 	{
 		node.buff[0] = '+';
 		return (1);
 	}
-	else if (IS_ON(node.flags, SPACE))
+	else if (is_on(node.flags, SPACE))
 	{
 		node.buff[0] = ' ';
 		return (1);

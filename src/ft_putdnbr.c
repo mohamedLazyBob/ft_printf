@@ -47,7 +47,7 @@ int		ft_putdnbr(va_list ap, int flags, int precision, int width)
 		ret = ft_strdup(MAX_L);
 	extract_nbr(&ret, &i, &n);
 	(void)(sign && (ret[0] = '-'));
-	SET_FLAG_ON(flags, DEC);
+	set_flag_on(&flags, DEC);
 	ret = build_result(flags, ret, precision, width);
 	return (ft_putxstr(ret));
 }

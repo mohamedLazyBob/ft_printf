@@ -12,6 +12,8 @@
 
 #include "../headers/ft_printf.h"
 
+extern	int	g_fd;
+
 int		ft_putfnbr(va_list ap, int flags, int precision, int width)
 {
 	t_buffer	node;
@@ -34,7 +36,7 @@ int		ft_putfnbr(va_list ap, int flags, int precision, int width)
 	node.flags = flags;
 	node.bol = 0;
 	print_double(nbr, &node, 0);
-	len = write(1, node.buff, ft_strlen(node.buff));
+	len = write(g_fd, node.buff, ft_strlen(node.buff));
 	ft_memdel((void**)&node.buff);
 	return (len);
 }
@@ -60,7 +62,7 @@ int		ft_putlfnbr(va_list ap, int flags, int precision, int width)
 	node.bol = 0;
 	print_long_double(nbr, &node, 0);
 	len = ft_strlen(node.buff);
-	write(1, node.buff, len);
+	write(g_fd, node.buff, len);
 	ft_memdel((void**)&node.buff);
 	return (len);
 }
@@ -88,7 +90,7 @@ int		ft_putenbr(va_list ap, int flags, int precision, int width)
 	node->bol = 1;
 	print_double(nbr, node, 1);
 	len = ft_strlen(node->buff);
-	write(1, node->buff, len);
+	write(g_fd, node->buff, len);
 	ft_memdel((void**)&node->buff);
 	ft_memdel((void**)&node);
 	return (len);
@@ -115,7 +117,7 @@ int		ft_putlenbr(va_list ap, int flags, int precision, int width)
 	node.bol = 1;
 	print_long_double(nbr, &node, 1);
 	len = ft_strlen(node.buff);
-	write(1, node.buff, len);
+	write(g_fd, node.buff, len);
 	ft_memdel((void**)&node.buff);
 	return (len);
 }

@@ -17,7 +17,7 @@ SRC_NAME=	apply_signs.c					fetch_by_sizem.c \
 			float_bigint_initial_tools.c	float_main_functions.c \
 			float_bigint_shift_functs.c		float_mini_dragon4.c \
 			float_scientific_construction.c	float_mini_dragon4_2.c \
-			old_macros_functions.c
+			old_macros_functions.c			ft_dprintf.c
 
 HDR_PATH= headers
 HDR_NAME= float_bigint.h	ft_printf.h
@@ -32,7 +32,7 @@ HDR= $(addprefix $(HDR_PATH)/,$(HDR_NAME))
 
 # **************************************************************************** #
 
-COMP=	gcc
+COMP= clang
 CFLAGES= -Wall -Wextra -Werror
 
 # **************************************************************************** #
@@ -60,7 +60,7 @@ lib:
 	@make -sC libft
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HDR) | $(OBJ_PATH)
-	@$(COMP) $(CFLAGS) -I $(HDR_FLAGS) -o $@ -c $<
+	@$(COMP) $(CFLAGES) -I $(HDR_FLAGS) -o $@ -c $<
 
 $(OBJ_PATH):
 	mkdir $@

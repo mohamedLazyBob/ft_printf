@@ -35,7 +35,6 @@ char	*apply_precision_2(char *result, int precision)
 {
 	char	*new_result;
 	int		len;
-	int		sign;
 	int		index;
 
 	result[precision + 1] = '\0';
@@ -51,7 +50,7 @@ char	*apply_precision_3(char *result, int precision)
 {
 	char	*new_result;
 	int		len;
-	int		sign;
+	// int		sign;
 	int		index;
 	int		digitsbefore;
 
@@ -73,8 +72,8 @@ char	*apply_precision(int *flags, char *result, int conv, int precision)
 {
 	char	*new_result;
 	int		len;
-	int		sign;
-	int		index;
+	// int		sign;
+	// int		index;
 
 	new_result = result;
 	if (precision < 0 && !(precision = 0))

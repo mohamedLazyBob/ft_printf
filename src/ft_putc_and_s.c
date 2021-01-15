@@ -12,6 +12,8 @@
 
 #include "../headers/ft_printf.h"
 
+extern	int	g_fd;
+
 int		ft_putc(va_list ap, int flags, int precision, int width)
 {
 	unsigned char	c;
@@ -23,20 +25,20 @@ int		ft_putc(va_list ap, int flags, int precision, int width)
 	ret = width;
 	if (width > 0 && is_on(flags, MINUS))
 	{
-		write(1, &c, 1);
+		write(g_fd, &c, 1);
 		while (--width)
-			write(1, " ", 1);
+			write(g_fd, " ", 1);
 		return (ret);
 	}
 	else if (width > 0 && !is_on(flags, MINUS))
 	{
 		while (--width)
-			write(1, " ", 1);
-		write(1, &c, 1);
+			write(g_fd, " ", 1);
+		write(g_fd, &c, 1);
 		return (ret);
 	}
 	else
-		write(1, &c, 1);
+		write(g_fd, &c, 1);
 	return (1);
 }
 
@@ -48,28 +50,28 @@ int		ft_put_char(char c, int flags, int width)
 	ret = width;
 	if (width > 0 && is_on(flags, MINUS))
 	{
-		write(1, &c, 1);
+		write(g_fd, &c, 1);
 		while (--width)
-			write(1, " ", 1);
+			write(g_fd, " ", 1);
 		return (ret);
 	}
 	else if (width > 0 && !is_on(flags, MINUS))
 	{
 		pad = is_on(flags, ZERO) ? '0' : ' ';
 		while (--width)
-			write(1, &pad, 1);
-		write(1, &c, 1);
+			write(g_fd, &pad, 1);
+		write(g_fd, &c, 1);
 		return (ret);
 	}
 	else
-		write(1, &c, 1);
+		write(g_fd, &c, 1);
 	return (1);
 }
 
 int		ft_puts(va_list ap, int flags, int precision, int width)
 {
 	char	*s;
-	int		len;
+	// int		len;
 
 	s = va_arg(ap, char*);
 	if (!s)

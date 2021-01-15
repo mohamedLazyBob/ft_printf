@@ -23,7 +23,7 @@ static void		ft_add_trailing_zeros(t_buffer *node, t_uint32 *numdigits, \
 	t_int32	stop;
 
 	if (node->print_expo > 0 && bigbit != -1337 && \
-			node->print_expo >= *numdigits)
+			(t_uint32)node->print_expo >= *numdigits)
 	{
 		stop = *numdigits;
 		pos = node->print_expo;

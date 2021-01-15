@@ -36,7 +36,6 @@ char	*place_before(char *result, char *prefix, int xbool)
 
 char	*place_at_lastsp(char *new_result, int sign, int flags)
 {
-	char	*tmp;
 	int		i;
 
 	i = 0;

@@ -18,6 +18,7 @@ int		save_precision(char *fmt, int *precision, va_list ap, int flags)
 	va_list	ap2;
 
 	i = 0;
+	(void)flags;
 	va_copy(ap2, ap);
 	if ((fmt && fmt[0] == '.') && (++fmt))
 	{

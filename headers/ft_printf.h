@@ -46,6 +46,8 @@ typedef enum	e_flag
 typedef struct lconv	t_lconv;
 long long		(*g_fetch_by_sizem[4])(va_list ap, int bsigned);
 int				(*g_router[12])(va_list, int, int, int);
+int				ft_printf(const char *restrict fmt, ...);
+int				ft_dprintf(int fd, const char *restrict format, ...);
 int				ft_put_char(char c, int flags, int width);
 int				ft_putc(va_list ap, int flags, int precision, int width);
 int				ft_puts(va_list ap, int flags, int precision, int width);
@@ -73,7 +75,6 @@ void			set(int color_id);
 int				set_color(char *fmt);
 char			*ft_downcase(char *fmt);
 void			printbits(void *p, int i);
-int				ft_printf(const char *restrict fmt, ...);
 long long		fetch_by_sizem_h(va_list ap, int bsigned);
 long long		fetch_by_sizem_ll(va_list ap, int bsigned);
 long long		fetch_by_sizem_l(va_list ap, int bsigned);
@@ -96,6 +97,7 @@ void			ft_format_float(t_bigint_compound *compound, t_int32 exponent,
 										t_buffer *node);
 void			ft_scientific_format(t_bigint_compound *compound,
 										t_int32 exponent, t_buffer *node);
-int			set_flag_on(int *flags, int pos);
+int				set_flag_on(int *flags, int pos);
+char			*flag_scope(int *nbr, char *fmt, va_list ap);
 
 #endif

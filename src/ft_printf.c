@@ -12,6 +12,8 @@
 
 #include "../headers/ft_printf.h"
 
+int	g_fd;
+
 int		va_argnth(va_list ap, char *fmt)
 {
 	int		i;
@@ -66,6 +68,7 @@ int		ft_printf(const char *restrict format, ...)
 	char	*fmt;
 
 	nbr = 0;
+	g_fd = 1;
 	va_start(ap, format);
 	fmt = (char*)format;
 	while (*fmt)
@@ -75,10 +78,10 @@ int		ft_printf(const char *restrict format, ...)
 		{
 			fmt = flag_scope(&nbr, fmt, ap);
 			if (*fmt && *fmt != '%')
-				nbr += write(1, fmt++, 1);
+				nbr += write(g_fd, fmt++, 1);
 		}
 		else if (*fmt)
-			nbr += write(1, fmt++, 1);
+			nbr += write(g_fd, fmt++, 1);
 	}
 	va_end(ap);
 	return (nbr);

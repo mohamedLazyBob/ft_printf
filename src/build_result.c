@@ -31,6 +31,7 @@ void		fspecial(char *result, int *flags, int *special, int *conv)
 
 int			gspecial(char *result, int *width, int *flags, int *conv)
 {
+	(void)result;
 	if (*width < 0)
 	{
 		*width = -(*width);

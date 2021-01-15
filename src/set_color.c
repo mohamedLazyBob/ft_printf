@@ -12,6 +12,8 @@
 
 #include "../headers/ft_printf.h"
 
+extern	int	g_fd;
+
 int		find_color(char *color)
 {
 	static char	*colors[13] = {"eoc", "red", "bold red", "green",
@@ -59,14 +61,14 @@ void	set(int color_id)
 		return ;
 	else if (!color_id)
 	{
-		write(1, "\e[0m", ft_strlen("\e[0m"));
+		write(g_fd, "\e[0m", ft_strlen("\e[0m"));
 		return ;
 	}
 	rep = (color_id % 2 != 0);
 	i = 0;
 	fmt[2] = '0' + !rep;
 	fmt[5] = '0' + ((color_id + rep) / 2);
-	write(1, fmt, 7);
+	write(g_fd, fmt, 7);
 }
 
 int		set_color(char *fmt)

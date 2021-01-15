@@ -44,8 +44,6 @@ char	*apply_hash_hex_2(char *result, int diff, char *prefix, int flags)
 
 char	*apply_hash_hex(char *result, int diff, char *prefix, int flags)
 {
-	int		i;
-
 	if (result[0] == '0')
 	{
 		if (diff >= 2 && is_on(flags, MINUS))

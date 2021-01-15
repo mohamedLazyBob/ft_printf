@@ -78,7 +78,7 @@ void			ft_scientific_format(t_bigint_compound *compound, \
 										t_buffer *node)
 {
 	t_uint32	pos;
-	char		signe;
+	// char		signe;
 
 	pos = ft_add_sign(compound, *node);
 	(node->buff) += (pos == 1) ? 1 : 0;

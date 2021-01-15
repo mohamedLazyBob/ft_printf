@@ -12,12 +12,14 @@
 
 #include "../headers/ft_printf.h"
 
+extern	int	g_fd;
+
 ssize_t		ft_putxstr(char *s)
 {
 	ssize_t		len;
 
 	len = ft_strlen(s);
-	write(1, s, len);
+	write(g_fd, s, len);
 	ft_memdel((void**)&s);
 	return (len);
 }

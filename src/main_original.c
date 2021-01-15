@@ -12,6 +12,8 @@
 
 #include "../headers/ft_printf.h"
 
+extern	int	g_fd;
+
 int		ft_putptr(va_list ap, int flags, int precision, int width)
 {
 	set_flag_on(&flags, POINTER);
@@ -23,7 +25,7 @@ int		ft_putptr(va_list ap, int flags, int precision, int width)
 int		ft_putgnbr(va_list ap, int flags, int precision, int width)
 {
 	(void)(precision + flags + width);
-	write(1, "", 1);
+	write(g_fd, "", 1);
 	va_arg(ap, void *);
 	return (0);
 }

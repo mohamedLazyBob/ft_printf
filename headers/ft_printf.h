@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 19:57:29 by fokrober          #+#    #+#             */
-/*   Updated: 2020/01/01 02:58:23 by mzaboub          ###   ########.fr       */
+/*   Updated: 2021/01/15 11:50:54 by mzaboub          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void			reset_flags(int	*flags);
 int				is_sign(int c);
 int				is_conv(int c);
 int				is_on(int flags, int pos);
-
-
 
 # define MAX_L " 9223372036854775808"
 # define DBL_DIGITS 16390

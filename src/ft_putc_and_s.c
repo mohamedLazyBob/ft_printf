@@ -6,7 +6,7 @@
 /*   By: mzaboub <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 02:08:32 by mzaboub           #+#    #+#             */
-/*   Updated: 2019/12/31 22:15:46 by mzaboub          ###   ########.fr       */
+/*   Updated: 2021/01/15 11:30:36 by mzaboub          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int		ft_put_char(char c, int flags, int width)
 int		ft_puts(va_list ap, int flags, int precision, int width)
 {
 	char	*s;
-	// int		len;
 
 	s = va_arg(ap, char*);
 	if (!s)

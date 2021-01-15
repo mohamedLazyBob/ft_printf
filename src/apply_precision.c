@@ -6,7 +6,7 @@
 /*   By: fokrober <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 21:52:58 by fokrober          #+#    #+#             */
-/*   Updated: 2020/01/01 02:56:51 by mzaboub          ###   ########.fr       */
+/*   Updated: 2021/01/15 11:21:21 by mzaboub          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ char	*apply_precision_3(char *result, int precision)
 {
 	char	*new_result;
 	int		len;
-	// int		sign;
 	int		index;
 	int		digitsbefore;
 
@@ -72,8 +71,6 @@ char	*apply_precision(int *flags, char *result, int conv, int precision)
 {
 	char	*new_result;
 	int		len;
-	// int		sign;
-	// int		index;
 
 	new_result = result;
 	if (precision < 0 && !(precision = 0))

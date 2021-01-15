@@ -6,7 +6,7 @@
 /*   By: mzaboub <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 21:05:14 by mzaboub           #+#    #+#             */
-/*   Updated: 2019/12/31 22:20:37 by mzaboub          ###   ########.fr       */
+/*   Updated: 2021/01/15 11:24:01 by mzaboub          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void			ft_scientific_format(t_bigint_compound *compound, \
 										t_buffer *node)
 {
 	t_uint32	pos;
-	// char		signe;
 
 	pos = ft_add_sign(compound, *node);
 	(node->buff) += (pos == 1) ? 1 : 0;
